@@ -1,0 +1,200 @@
+﻿{
+    "openapi": "3.0.4",
+    "info": {
+        "title": "BoatBooking.API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/admin/pending-owners": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/admin/approve-owner/{id}": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/admin/reject-owner/{id}": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/Auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterUserCommand"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterUserCommand"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterUserCommand"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/Auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginUserCommand"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginUserCommand"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginUserCommand"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/Customer/profile": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/Owner/dashboard": {
+            "get": {
+                "tags": [
+                    "Owner"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "LoginUserCommand": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RegisterUserCommand": {
+                "type": "object",
+                "properties": {
+                    "fullName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "role": {
+                        "$ref": "#/components/schemas/UserRole"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UserRole": {
+                "enum": [
+                    "Admin",
+                    "Owner",
+                    "Customer"
+                ],
+                "type": "string"
+            }
+        }
+    }
+}

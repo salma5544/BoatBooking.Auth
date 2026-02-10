@@ -23,9 +23,6 @@ builder.Services.AddControllers()
             new System.Text.Json.Serialization.JsonStringEnumConverter());
     });
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
 // Database
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
@@ -75,13 +72,16 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 // Global exception handling

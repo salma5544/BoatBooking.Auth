@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Documentation\swagger.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Documentation\swagger.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.12">
@@ -15,6 +23,7 @@
     </PackageReference>
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
   </ItemGroup>
 
