@@ -47,7 +47,7 @@ Response:
 }
 
 ```
-## Notes
-1- Owner accounts need Admin approval before logging in.
-2- Logging is done with Serilog (console + file)
-3- Errors are handled via global middleware and returned as JSON
+## Notes:
+- Owner accounts need Admin approval before logging in.
+- Logging is done with Serilog (console + file)
+- Errors are handled via global middleware and returned as JSON
